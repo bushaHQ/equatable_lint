@@ -30,15 +30,12 @@ class MissingFieldInEquatableProps extends DartLintRule {
       required watchableFields,
       required equatablePropsExpressionDetails,
     }) {
-      final equatablePropsFieldsNames =
-          equatablePropsExpressionDetails?.fieldsNames;
+      final equatablePropsFieldsNames = equatablePropsExpressionDetails?.fieldsNames;
 
-      final isFieldInEquatableProps =
-          equatablePropsFieldsNames?.contains(fieldElement.displayName) ??
-              false;
+      final isFieldInEquatableProps = equatablePropsFieldsNames?.contains(fieldElement.displayName) ?? false;
 
       if (!isFieldInEquatableProps) {
-        reporter.reportErrorForNode(_code, fieldNode);
+        reporter.atNode(fieldNode, _code);
       }
     });
   }
